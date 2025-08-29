@@ -8,10 +8,7 @@ public class UserTok {
 
     static Map<String, Optional<UserMan>> map;
 
-    static {
-        map = new HashMap<>();
-        map.put("000", Optional.of(new UserMan("NONAME")));
-    }
+
 
     public static class UserMan {
         String name;
@@ -37,9 +34,14 @@ public class UserTok {
 
     Optional<String> findUserName(Optional<String> token) {
         Optional<UserMan> userman = findUser(token.get());
-        Optional<String> username = userman.map(u -> u.getName());
-        String name = username.orElseGet(() -> "Пользователь не найден");
-        System.out.println(name);
-        return username;
+        if (userman.isEmpty()) {
+            return Optional.of("no user");
+        }
+        else {
+            Optional<String> username = userman.map(u -> u.getName());
+            String name = username.orElseGet(() -> "Пользователь не найден");
+            System.out.println(name);
+            return username;
+        }
     }
 }

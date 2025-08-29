@@ -13,7 +13,6 @@ public class Main {
         userTok.map = new HashMap<>();
         UserTok.UserMan man1 = new UserTok.UserMan("Mike");
         UserTok.UserMan man2 = new UserTok.UserMan("John");
-        userTok.map.put("000", Optional.of(man1));
         userTok.map.put("123", Optional.of(man1));
         userTok.map.put("365", Optional.of(man2));
         Optional<String> username = userTok.findUserName(token);
